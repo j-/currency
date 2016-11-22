@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 import {
 	UPDATE_SERVICE,
 	SET_ACTIVE_SERVICE,
