@@ -1,7 +1,7 @@
 /*
 
   {
-    "timestamp": "1479783607",
+    "timestamp": 1479783607,
     "base": "USD",
     "rates": {
       "AED": 3.6728,
