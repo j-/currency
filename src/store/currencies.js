@@ -7,3 +7,11 @@ export default (state = DEFAULT_CURRENCIES, action) => {
 			return state;
 	}
 };
+
+export const getCurrencies = (state) => (
+	state
+);
+
+export const getCurrencyName = (state, code) => (
+	state[String(code).toUpperCase()]
+);
