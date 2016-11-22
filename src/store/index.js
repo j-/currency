@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import app, * as appModule from './app';
 import currencies, * as currenciesModule from './currencies';
 import services, * as servicesModule from './services';
 
@@ -7,6 +8,7 @@ import {
 } from './services';
 
 export default combineReducers({
+	app,
 	currencies,
 	services,
 });
