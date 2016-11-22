@@ -4,7 +4,7 @@ import Conversion from '../containers/Conversion';
 import CurrenciesList from '../containers/CurrenciesList';
 
 const App = () => (
-	<div>
+	<div className="app">
 		<h1>Currencies</h1>
 		<Command autoFocus />
 		<Conversion />

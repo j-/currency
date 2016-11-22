@@ -6,6 +6,7 @@ import App from './components/App';
 import { useFixer } from './store/actions';
 
 import 'elemental/less/elemental';
+import './styles';
 
 const store = prepareStore();
 
