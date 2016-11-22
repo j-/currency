@@ -5,10 +5,11 @@
 
 Currently supports the following exchange rates services:
 
-* [OpenExchangeRates.org](https://openexchangerates.org/)
-    - Needs an [App ID](https://openexchangerates.org/signup)
 * [CurrencyLayer.com](https://currencylayer.com/)
     - Needs an [Access Key](https://currencylayer.com/product)
+* [Fixer.io](http://fixer.io/)
+* [OpenExchangeRates.org](https://openexchangerates.org/)
+    - Needs an [App ID](https://openexchangerates.org/signup)
 
 ## Building
 
