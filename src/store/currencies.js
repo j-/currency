@@ -9,7 +9,9 @@ export default (state = DEFAULT_CURRENCIES, action) => {
 };
 
 export const getCurrencies = (state) => (
-	state
+	Object.keys(state).sort().map((code) => (
+		[code, state[code]]
+	))
 );
 
 export const getCurrencyName = (state, code) => (
