@@ -30,3 +30,7 @@ export const getBase = (state) => (
 export const getRate = (state, code) => (
 	state.rates[code] || null
 );
+
+export const convert = (state, value, fromCode, toCode) => (
+	(value * getRate(state, fromCode)) / getRate(state, toCode)
+);
