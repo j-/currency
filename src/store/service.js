@@ -37,6 +37,17 @@ export const getRate = (state, code) => (
 	state.rates[code] || null
 );
 
-export const convert = (state, value, fromCode, toCode) => (
-	(value / getRate(state, fromCode)) * getRate(state, toCode)
-);
+export const convert = (state, value, fromCode, toCode) => {
+	if (value === null || isNaN(value)) {
+		return null;
+	}
+	const fromRate = getRate(state, fromCode);
+	if (fromRate === null) {
+		return null;
+	}
+	const toRate = getRate(state, toCode);
+	if (toRate === null) {
+		return null;
+	}
+	return (value / fromRate) * toRate;
+};
