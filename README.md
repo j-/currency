@@ -13,8 +13,8 @@ Currently supports the following exchange rates services:
 ## Building
 
 ```
-$ export APP_ID_OER="openexchangerates.org key here"
-$ export APP_ID_CL="currencylayer.com key here"
+$ export KEY_OER="openexchangerates.org key here"
+$ export KEY_CL="currencylayer.com key here"
 $ npm run build
 ```
 

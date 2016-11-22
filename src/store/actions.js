@@ -10,11 +10,11 @@ import {
 } from './services';
 
 export const updateOpenExchangeRates = () => (dispatch) => {
-	const appID = process.env.APP_ID_OER;
-	if (!appID) {
+	const key = process.env.KEY_OER;
+	if (!key) {
 		throw new Error('OpenExchangeRates.org application ID not set');
 	}
-	const uri = `https://openexchangerates.org/api/latest.json?app_id=${appID}`;
+	const uri = `https://openexchangerates.org/api/latest.json?app_id=${key}`;
 	fetch(uri)
 		.then((response) => response.json())
 		.then((response) => {
@@ -43,11 +43,11 @@ export const updateFixer = () => (dispatch) => {
 };
 
 export const updateCurrencyLayer = () => (dispatch) => {
-	const appID = process.env.APP_ID_CL;
-	if (!appID) {
+	const key = process.env.KEY_CL;
+	if (!key) {
 		throw new Error('CurrencyLayer.com access key not set');
 	}
-	const uri = `http://www.apilayer.net/api/live?access_key=${appID}&format=2`;
+	const uri = `http://www.apilayer.net/api/live?access_key=${key}&format=2`;
 	fetch(uri)
 		.then((response) => response.json())
 		.then((response) => {
