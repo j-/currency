@@ -6,7 +6,7 @@ import CurrenciesList from '../containers/CurrenciesList';
 const App = () => (
 	<div className="app">
 		<h1>Currencies</h1>
-		<Command autoFocus />
+		<Command autoFocus size="lg" />
 		<Conversion />
 		<CurrenciesList />
 	</div>
