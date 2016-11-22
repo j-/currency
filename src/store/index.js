@@ -17,6 +17,10 @@ export const getActiveService = (state) => (
 	appModule.getActiveService(state.app)
 );
 
+export const getAmount = (state) => (
+	appModule.getAmount(state.app)
+);
+
 export const getCurrencies = (state) => (
 	currenciesModule.getCurrencies(state.currencies)
 );

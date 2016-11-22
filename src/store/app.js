@@ -5,6 +5,7 @@ import {
 
 const DEFAULT_STATE = {
 	activeService: null,
+	amount: null,
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -17,7 +18,7 @@ export default (state = DEFAULT_STATE, action) => {
 		case SET_CONVERSION_AMOUNT:
 			return {
 				...state,
-				amount: action.amount,
+				amount: Number(action.amount),
 			};
 		default:
 			return state;
@@ -26,4 +27,8 @@ export default (state = DEFAULT_STATE, action) => {
 
 export const getActiveService = (state) => (
 	state.activeService
+);
+
+export const getAmount = (state) => (
+	state.amount || 0
 );

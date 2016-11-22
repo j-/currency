@@ -3,13 +3,14 @@ import Conversion from '../components/Conversion';
 
 import {
 	getActiveService,
+	getAmount,
 	convert,
 } from '../store';
 
 const mapStateToProps = (state) => {
 	const fromCode = 'AUD';
 	const toCode = 'USD';
-	const value = 100;
+	const value = getAmount(state);
 	const service = getActiveService(state);
 	const converted = convert(state, service, value, fromCode, toCode);
 	return {
