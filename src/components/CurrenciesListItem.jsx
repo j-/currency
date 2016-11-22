@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const CurrencyListItem = ({ code, name }) => (
 	<div>
-		<strong>{ code }</strong>
+		<strong style={{ fontFamily: 'monospace' }}>{ code }</strong>
 		{ ': ' }
 		<span>{ name }</span>
 	</div>
