@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { prepareStore } from './store/prepare';
 import App from './components/App';
-import { useOpenExchangeRates } from './store/actions';
+import { useFixer } from './store/actions';
 
 const store = prepareStore();
 
 store.dispatch(
-	useOpenExchangeRates()
+	useFixer()
 );
 
 ReactDOM.render(
