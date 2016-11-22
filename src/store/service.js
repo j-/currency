@@ -38,5 +38,5 @@ export const getRate = (state, code) => (
 );
 
 export const convert = (state, value, fromCode, toCode) => (
-	(value * getRate(state, fromCode)) / getRate(state, toCode)
+	(value / getRate(state, fromCode)) * getRate(state, toCode)
 );
