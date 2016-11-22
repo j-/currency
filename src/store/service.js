@@ -1,3 +1,7 @@
+import {
+	UPDATE_SERVICE,
+} from './types';
+
 /*
 
   {
@@ -24,6 +28,16 @@ export default (service) => (state = DEFAULT_STATE, action) => {
 		return state;
 	}
 	switch (action.type) {
+		case UPDATE_SERVICE:
+			return {
+				...state,
+				timestamp: action.timestamp,
+				base: action.base,
+				rates: {
+					...state.rates,
+					...action.rates,
+				},
+			};
 		default:
 			return state;
 	}
