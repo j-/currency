@@ -18,3 +18,15 @@ export const getCurrencies = (state) => (
 export const getCurrencyName = (state, code) => (
 	currenciesModule.getCurrencyName(state.currencies, code)
 );
+
+export const getBase = (state, service) => (
+	servicesModule.getBase(state.services, service)
+);
+
+export const getRate = (state, service, code) => (
+	servicesModule.getRate(state.services, service, code)
+);
+
+export const convert = (state, service, value, fromCode, toCode) => (
+	servicesModule.convert(state.services, service, value, fromCode, toCode)
+);
