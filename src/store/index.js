@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import currencies, * as currenciesModule from './currencies';
-import rates, * as ratesModule from './rates';
+import services, * as servicesModule from './services';
+
+import {
+	SERVICE_OER,
+} from './services';
 
 export default combineReducers({
 	currencies,
-	rates,
+	services,
 });
 
 export const getCurrencies = (state) => (
