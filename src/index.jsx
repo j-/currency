@@ -5,6 +5,8 @@ import { prepareStore } from './store/prepare';
 import App from './components/App';
 import { useFixer } from './store/actions';
 
+import 'elemental/less/elemental';
+
 const store = prepareStore();
 
 store.dispatch(
