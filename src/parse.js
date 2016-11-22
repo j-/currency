@@ -6,5 +6,7 @@ export const parseValue = (sentence) => {
 
 export const parse = (sentence) => {
 	const value = parseValue(sentence);
-	return { value };
+	const fromCode = 'USD';
+	const toCode = 'AUD';
+	return { value, fromCode, toCode };
 };
