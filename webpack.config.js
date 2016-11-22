@@ -12,7 +12,7 @@ module.exports = {
 		filename: 'bundle.js',
 	},
 	resolve: {
-		extensions: ['', '.js', '.jsx', '.css', '.less'],
+		extensions: ['', '.js', '.json', '.jsx'],
 	},
 	module: {
 		loaders: [
@@ -22,6 +22,10 @@ module.exports = {
 					resolve('./src'),
 				],
 				test: /\.jsx?$/,
+			},
+			{
+				loader: 'json',
+				test: /\.json$/,
 			},
 		],
 	},
