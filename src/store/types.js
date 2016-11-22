@@ -1,1 +1,3 @@
 export const UPDATE_SERVICE = 'UPDATE_SERVICE';
+
+export const SET_ACTIVE_SERVICE = 'SET_ACTIVE_SERVICE';

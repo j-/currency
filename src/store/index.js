@@ -13,6 +13,10 @@ export default combineReducers({
 	services,
 });
 
+export const getActiveService = (state) => (
+	appModule.getActiveService(state.app)
+);
+
 export const getCurrencies = (state) => (
 	currenciesModule.getCurrencies(state.currencies)
 );
