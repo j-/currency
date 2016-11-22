@@ -5,6 +5,7 @@ import {
 
 import {
 	SERVICE_OER,
+	SERVICE_FIXER,
 } from './services';
 
 export const updateOpenExchangeRates = () => (dispatch) => {
@@ -19,7 +20,21 @@ export const updateOpenExchangeRates = () => (dispatch) => {
 			dispatch({
 				type: UPDATE_SERVICE,
 				service: SERVICE_OER,
-				timestamp: response.timestamp,
+				timestamp: response.timestamp * 1000,
+				base: response.base,
+				rates: response.rates,
+			});
+		});
+};
+
+export const updateFixer = () => (dispatch) => {
+	fetch('https://api.fixer.io/latest')
+		.then((response) => response.json())
+		.then((response) => {
+			dispatch({
+				type: UPDATE_SERVICE,
+				service: SERVICE_FIXER,
+				timestamp: (new Date(response.date)).getTime(),
 				base: response.base,
 				rates: response.rates,
 			});
@@ -34,9 +49,21 @@ export const useOpenExchangeRates = () => (dispatch) => {
 	return updateOpenExchangeRates()(dispatch);
 };
 
+export const useFixer = () => (dispatch) => {
+	dispatch({
+		type: SET_ACTIVE_SERVICE,
+		service: SERVICE_FIXER,
+	});
+	return updateFixer()(dispatch);
+};
+
 export const updateService = (service) => (dispatch) => {
 	switch (service) {
 		case SERVICE_OER:
 			return updateOpenExchangeRates()(dispatch);
+		case SERVICE_FIXER:
+			return updateFixer()(dispatch);
+		default:
+			throw new Error(`Unrecognized service "${service}"`);
 	}
 };

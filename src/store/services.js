@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import service, * as serviceModule from './service';
 
 export const SERVICE_OER = 'openexchangerates.org';
+export const SERVICE_FIXER = 'fixer.io';
 
 export default combineReducers({
 	[SERVICE_OER]: service(SERVICE_OER),
+	[SERVICE_FIXER]: service(SERVICE_FIXER),
 });
 
 const getServiceState = (state, service) => {
