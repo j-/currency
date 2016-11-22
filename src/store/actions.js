@@ -1,5 +1,6 @@
 import {
 	UPDATE_SERVICE,
+	SET_ACTIVE_SERVICE,
 } from './types';
 
 import {
@@ -23,6 +24,14 @@ export const updateOpenExchangeRates = () => (dispatch) => {
 				rates: response.rates,
 			});
 		});
+};
+
+export const useOpenExchangeRates = () => (dispatch) => {
+	dispatch({
+		type: SET_ACTIVE_SERVICE,
+		service: SERVICE_OER,
+	});
+	return updateOpenExchangeRates()(dispatch);
 };
 
 export const updateService = (service) => (dispatch) => {
