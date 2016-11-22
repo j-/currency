@@ -1,5 +1,6 @@
 import {
 	SET_ACTIVE_SERVICE,
+	SET_CONVERSION_AMOUNT,
 } from './types';
 
 const DEFAULT_STATE = {
@@ -12,6 +13,11 @@ export default (state = DEFAULT_STATE, action) => {
 			return {
 				...state,
 				activeService: action.service,
+			};
+		case SET_CONVERSION_AMOUNT:
+			return {
+				...state,
+				amount: action.amount,
 			};
 		default:
 			return state;

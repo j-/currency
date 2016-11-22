@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import {
 	UPDATE_SERVICE,
 	SET_ACTIVE_SERVICE,
+	SET_CONVERSION_AMOUNT,
 } from './types';
 
 import {
@@ -106,3 +107,8 @@ export const updateService = (service) => (dispatch) => {
 			throw new Error(`Unrecognized service "${service}"`);
 	}
 };
+
+export const setAmount = (amount) => ({
+	type: SET_CONVERSION_AMOUNT,
+	amount,
+});
