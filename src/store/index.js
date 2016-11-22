@@ -1,6 +1,6 @@
-export default (state = null, action) => {
-	switch (action.type) {
-		default:
-			return state;
-	}
-};
+import { combineReducers } from 'redux';
+import currencies from './currencies';
+
+export default combineReducers({
+	currencies,
+});
