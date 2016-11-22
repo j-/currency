@@ -12,7 +12,13 @@
 
 */
 
-export default (service) => (state = {}, action) => {
+const DEFAULT_STATE = {
+	timestamp: null,
+	base: null,
+	rates: {},
+};
+
+export default (service) => (state = DEFAULT_STATE, action) => {
 	// Ignore updates to unrecognised services
 	if (action.service !== service) {
 		return state;
