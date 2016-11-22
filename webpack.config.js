@@ -36,6 +36,7 @@ module.exports = {
 		new DefinePlugin({
 			'process.env': {
 				'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+				'APP_ID_CL': JSON.stringify(process.env.APP_ID_CL),
 				'APP_ID_OER': JSON.stringify(process.env.APP_ID_OER),
 			},
 		}),

@@ -6,6 +6,7 @@ import {
 import {
 	SERVICE_OER,
 	SERVICE_FIXER,
+	SERVICE_CL,
 } from './services';
 
 export const updateOpenExchangeRates = () => (dispatch) => {
@@ -41,6 +42,32 @@ export const updateFixer = () => (dispatch) => {
 		});
 };
 
+export const updateCurrencyLayer = () => (dispatch) => {
+	const appID = process.env.APP_ID_CL;
+	if (!appID) {
+		throw new Error('CurrencyLayer.com access key not set');
+	}
+	const uri = `http://www.apilayer.net/api/live?access_key=${appID}&format=2`;
+	fetch(uri)
+		.then((response) => response.json())
+		.then((response) => {
+			const rates = {};
+			const quotes = response.quotes;
+			Object.keys(quotes).forEach((key) => {
+				const code = key.substring(3);
+				const rate = quotes[key];
+				rates[code] = rate;
+			});
+			dispatch({
+				type: UPDATE_SERVICE,
+				service: SERVICE_CL,
+				timestamp: response.timestamp * 1000,
+				base: response.source,
+				rates,
+			});
+		});
+};
+
 export const useOpenExchangeRates = () => (dispatch) => {
 	dispatch({
 		type: SET_ACTIVE_SERVICE,
@@ -57,12 +84,22 @@ export const useFixer = () => (dispatch) => {
 	return updateFixer()(dispatch);
 };
 
+export const useCurrencyLayer = () => (dispatch) => {
+	dispatch({
+		type: SET_ACTIVE_SERVICE,
+		service: SERVICE_CL,
+	});
+	return updateCurrencyLayer()(dispatch);
+};
+
 export const updateService = (service) => (dispatch) => {
 	switch (service) {
 		case SERVICE_OER:
 			return updateOpenExchangeRates()(dispatch);
 		case SERVICE_FIXER:
 			return updateFixer()(dispatch);
+		case SERVICE_CL:
+			return updateCurrencyLayer()(dispatch);
 		default:
 			throw new Error(`Unrecognized service "${service}"`);
 	}
