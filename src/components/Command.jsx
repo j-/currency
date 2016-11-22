@@ -58,6 +58,7 @@ export default class Command extends Component {
 		const { input, placeholder } = this.state;
 		return (
 			<FormInput
+				{ ...this.props }
 				value={ input }
 				placeholder={ placeholder }
 				onChange={ this.handleChangeInput }
