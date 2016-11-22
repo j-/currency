@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { parse } from '../parse';
 
 import {
 	FormInput,
@@ -51,14 +52,22 @@ export default class Command extends Component {
 	handleChangeInput (e) {
 		this.setState({
 			input: e.target.value,
-		});
+		}, () => this.parseInput());
+	}
+
+	parseInput () {
+		const { onChangeValues } = this.props;
+		const { input } = this.state;
+		const { value, fromCode, toCode } = parse(input);
+		onChangeValues({ value, fromCode, toCode });
 	}
 
 	render () {
 		const { input, placeholder } = this.state;
+		const { onChangeValues, ...props } = this.props;
 		return (
 			<FormInput
-				{ ...this.props }
+				{ ...props }
 				value={ input }
 				placeholder={ placeholder }
 				onChange={ this.handleChangeInput }
@@ -66,3 +75,11 @@ export default class Command extends Component {
 		);
 	}
 }
+
+Command.propTypes = {
+	onChangeValues: PropTypes.func,
+};
+
+Command.defaultProps = {
+	onChangeValues: () => {},
+};

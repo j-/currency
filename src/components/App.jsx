@@ -1,5 +1,5 @@
 import React from 'react';
-import Command from './Command';
+import Command from '../containers/Command';
 import Conversion from '../containers/Conversion';
 import CurrenciesList from '../containers/CurrenciesList';
 
