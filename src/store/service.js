@@ -48,7 +48,9 @@ export const getBase = (state) => (
 );
 
 export const getRate = (state, code) => (
-	state.rates[code] || null
+	getBase(state) === code ?
+		1 :
+		state.rates[code] || null
 );
 
 export const convert = (state, value, fromCode, toCode) => {
