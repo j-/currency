@@ -7,7 +7,7 @@ const buildHeader = (code) => (
 const buildHeadersTop = (codes) => (
 	<tr>
 		{ [
-			<td key="blank" />,
+			<td key="blank" className="favorites-table--blank" />,
 			...codes.map((code) => buildHeader(code))
 		] }
 	</tr>
