@@ -42,3 +42,7 @@ export const getRate = (state, service, code) => (
 export const convert = (state, service, value, fromCode, toCode) => (
 	servicesModule.convert(state.services, service, value, fromCode, toCode)
 );
+
+export const getFavoriteCodes = (state) => (
+	favoritesModule.getFavoriteCodes(state.favorites)
+);

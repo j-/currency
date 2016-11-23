@@ -12,3 +12,7 @@ export default (state = DEFAULT_STATE, action) => {
 			return state;
 	}
 };
+
+export const getFavoriteCodes = (state) => (
+	state
+);
