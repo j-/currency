@@ -1,21 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { parse } from '../parse';
+import examples from '../data/example-commands';
 
 import {
 	FormInput,
 } from 'elemental';
 
 const PLACEHOLDER_INTERVAL = 3000;
-
-const examples = [
-	'100 aud in usd',
-	'€50 to JPY',
-	'CNY1000 in EUR',
-];
-
-const getExampleByIndex = (index) => (
-	examples[index % examples.length]
-);
 
 export default class Command extends Component {
 	constructor (props) {
@@ -44,7 +35,7 @@ export default class Command extends Component {
 
 	updatePlaceholder () {
 		this.setState((state) => ({
-			placeholder: getExampleByIndex(state.placeholderIndex + 1),
+			placeholder: examples[state.placeholderIndex % examples.length],
 			placeholderIndex: state.placeholderIndex + 1,
 		}));
 	}
