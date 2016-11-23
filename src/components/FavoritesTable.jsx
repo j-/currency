@@ -14,16 +14,30 @@ const buildHeadersTop = (codes) => (
 );
 
 const buildCell = (fromCode, toCode, convert) => {
-	const className = fromCode === toCode ? 'favorites-table--equal' : '';
+	const isEqual = fromCode === toCode;
+	const className = isEqual ? 'favorites-table--equal' : '';
 	const key = `${fromCode}-${toCode}`;
 	const converted = convert(fromCode, toCode);
-	let textContent;
+	let value, textContent, title;
 	if (converted === null) {
 		textContent = '?';
+		title = 'Conversion is unknown';
 	} else {
-		textContent = converted.toFixed(4);
+		value = converted.toFixed(4);
+		textContent = value;
+		if (!isEqual) {
+			title = `1.0000 ${fromCode} = ${value} ${toCode}`;
+		}
 	}
-	return <td key={ key } className={ className }>{ textContent }</td>;
+	return (
+		<td
+			key={ key }
+			className={ className }
+			title={ title }
+		>
+			{ textContent }
+		</td>
+	);
 };
 
 const buildRow = (fromCode, codes, convert) => (
