@@ -8,8 +8,11 @@ const App = () => (
 	<div className="app">
 		<h1>Currencies</h1>
 		<Command autoFocus size="lg" />
+		<hr />
 		<Conversion />
+		<hr />
 		<FavoritesTable />
+		<hr />
 		<CurrenciesList />
 	</div>
 );
