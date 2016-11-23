@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import app, * as appModule from './app';
 import currencies, * as currenciesModule from './currencies';
 import services, * as servicesModule from './services';
+import favorites, * as favoritesModule from './favorites';
 
 import {
 	SERVICE_OER,
@@ -11,6 +12,7 @@ export default combineReducers({
 	app,
 	currencies,
 	services,
+	favorites,
 });
 
 export const getActiveService = (state) => (

@@ -4,6 +4,7 @@ import {
 	UPDATE_SERVICE,
 	SET_ACTIVE_SERVICE,
 	SET_CONVERSION_AMOUNT,
+	SET_FAVORITE_CODES,
 } from './types';
 
 import {
@@ -111,4 +112,9 @@ export const updateService = (service) => (dispatch) => {
 export const setAmount = (amount) => ({
 	type: SET_CONVERSION_AMOUNT,
 	amount,
+});
+
+export const setFavoriteCodes = (codes) => ({
+	type: SET_FAVORITE_CODES,
+	codes,
 });
