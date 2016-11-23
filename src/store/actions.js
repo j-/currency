@@ -55,6 +55,12 @@ export const updateCurrencyLayer = () => (dispatch) => {
 	fetch(uri)
 		.then((response) => response.json())
 		.then((response) => {
+			if (response.error) {
+				throw new Error(response.error.info);
+			}
+			return response;
+		})
+		.then((response) => {
 			const rates = {};
 			const quotes = response.quotes;
 			Object.keys(quotes).forEach((key) => {
