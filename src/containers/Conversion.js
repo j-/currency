@@ -2,10 +2,20 @@ import { connect } from 'react-redux';
 import Conversion from '../components/Conversion';
 
 import {
+	SERVICE_CL,
+	SERVICE_FIXER,
+	SERVICE_OER,
+} from '../store/services';
+
+import {
 	getActiveService,
 	getAmount,
 	convert,
 } from '../store';
+
+import {
+	useService,
+} from '../store/actions';
 
 const mapStateToProps = (state) => {
 	const fromCode = 'AUD';
@@ -19,9 +29,19 @@ const mapStateToProps = (state) => {
 		value,
 		service,
 		converted,
+		serviceOptions: [
+			{ label: SERVICE_CL, value: SERVICE_CL },
+			{ label: SERVICE_FIXER, value: SERVICE_FIXER },
+			{ label: SERVICE_OER, value: SERVICE_OER },
+		],
 	};
 };
 
+const mapDispatchToProps = {
+	onChangeService: useService,
+};
+
 export default connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Conversion);

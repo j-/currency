@@ -96,6 +96,14 @@ export const useCurrencyLayer = () => (dispatch) => {
 	return updateCurrencyLayer()(dispatch);
 };
 
+export const useService = (service) => (dispatch) => {
+	dispatch({
+		type: SET_ACTIVE_SERVICE,
+		service: service,
+	});
+	return updateService(service)(dispatch);
+};
+
 export const updateService = (service) => (dispatch) => {
 	switch (service) {
 		case SERVICE_OER:

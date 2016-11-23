@@ -3,6 +3,7 @@ import React, { PropTypes } from 'react';
 import {
 	Form,
 	FormField,
+	FormSelect,
 	FormInput,
 } from 'elemental';
 
@@ -13,11 +14,13 @@ const Conversion = ({
 	toCode,
 	value,
 	service,
+	serviceOptions,
 	converted,
+	onChangeService,
 }) => (
 	<Form type="horizontal" onSubmit={ cancel }>
 		<FormField label="Service">
-			{ service }
+			<FormSelect options={ serviceOptions } value={ service } onChange={ onChangeService } />
 		</FormField>
 		<FormField label="From">
 			<FormInput type="text" placeholder="USD" value={ fromCode } readOnly />
@@ -39,6 +42,13 @@ Conversion.propTypes = {
 	toCode: PropTypes.string.isRequired,
 	value: PropTypes.number.isRequired,
 	converted: PropTypes.number,
+	onChangeService: PropTypes.func.isRequired,
+	serviceOptions: PropTypes.arrayOf(
+		PropTypes.shape({
+			label: PropTypes.string.isRequired,
+			value: PropTypes.any.isRequired,
+		})
+	).isRequired,
 };
 
 export default Conversion;
