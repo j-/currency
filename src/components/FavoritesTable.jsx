@@ -14,6 +14,7 @@ const buildHeadersTop = (codes) => (
 );
 
 const buildCell = (fromCode, toCode, convert) => {
+	const className = fromCode === toCode ? 'favorites-table--equal' : '';
 	const key = `${fromCode}-${toCode}`;
 	const converted = convert(fromCode, toCode);
 	let textContent;
@@ -22,7 +23,7 @@ const buildCell = (fromCode, toCode, convert) => {
 	} else {
 		textContent = converted.toFixed(4);
 	}
-	return <td key={ key }>{ textContent }</td>;
+	return <td key={ key } className={ className }>{ textContent }</td>;
 };
 
 const buildRow = (fromCode, codes, convert) => (
