@@ -4,10 +4,6 @@ import currencies, * as currenciesModule from './currencies';
 import services, * as servicesModule from './services';
 import favorites, * as favoritesModule from './favorites';
 
-import {
-	SERVICE_OER,
-} from './services';
-
 export default combineReducers({
 	app,
 	currencies,
