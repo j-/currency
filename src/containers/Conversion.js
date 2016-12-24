@@ -5,6 +5,7 @@ import {
 	SERVICE_CL,
 	SERVICE_FIXER,
 	SERVICE_OER,
+	SERVICE_NAB,
 } from '../store/services';
 
 import {
@@ -32,6 +33,7 @@ const mapStateToProps = (state) => {
 		serviceOptions: [
 			{ label: SERVICE_CL, value: SERVICE_CL },
 			{ label: SERVICE_FIXER, value: SERVICE_FIXER },
+			{ label: SERVICE_NAB, value: SERVICE_NAB },
 			{ label: SERVICE_OER, value: SERVICE_OER },
 		],
 	};

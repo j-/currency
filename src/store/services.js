@@ -4,11 +4,13 @@ import service, * as serviceModule from './service';
 export const SERVICE_OER = 'openexchangerates.org';
 export const SERVICE_FIXER = 'fixer.io';
 export const SERVICE_CL = 'currencylayer.com';
+export const SERVICE_NAB = 'nab.com.au';
 
 export default combineReducers({
 	[SERVICE_OER]: service(SERVICE_OER),
 	[SERVICE_FIXER]: service(SERVICE_FIXER),
 	[SERVICE_CL]: service(SERVICE_CL),
+	[SERVICE_NAB]: service(SERVICE_NAB),
 });
 
 const getServiceState = (state, service) => {

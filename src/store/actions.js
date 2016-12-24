@@ -11,6 +11,7 @@ import {
 	SERVICE_OER,
 	SERVICE_FIXER,
 	SERVICE_CL,
+	SERVICE_NAB,
 } from './services';
 
 export const updateOpenExchangeRates = () => (dispatch) => {
@@ -78,6 +79,35 @@ export const updateCurrencyLayer = () => (dispatch) => {
 		});
 };
 
+export const updateNAB = () => (dispatch) => {
+	const key = process.env.KEY_NAB;
+	if (!key) {
+		throw new Error('NAB.com.au API key not set');
+	}
+	const uri = 'https://api.developer.nab.com.au/v2/fxrates?v=1';
+	const options = {
+		headers: {
+			'X-NAB-KEY': key,
+		},
+	};
+	fetch(uri, options)
+		.then((response) => response.json())
+		.then((payload) => payload.fxRatesResponse)
+		.then((response) => {
+			const rates = {};
+			response.fxRates.forEach((rate) => {
+				rates[rate.buyCurrency] = Number(rate.currentBuyRate);
+			});
+			dispatch({
+				type: UPDATE_SERVICE,
+				service: SERVICE_NAB,
+				timestamp: (new Date(response.lastUpdatedDate)).getTime(),
+				base: response.fxRates[0].sellCurrency,
+				rates,
+			});
+		});
+};
+
 export const useOpenExchangeRates = () => (dispatch) => {
 	dispatch({
 		type: SET_ACTIVE_SERVICE,
@@ -102,6 +132,14 @@ export const useCurrencyLayer = () => (dispatch) => {
 	return updateCurrencyLayer()(dispatch);
 };
 
+export const useNAB = () => (dispatch) => {
+	dispatch({
+		type: SET_ACTIVE_SERVICE,
+		service: SERVICE_NAB,
+	});
+	return updateNAB()(dispatch);
+};
+
 export const useService = (service) => (dispatch) => {
 	dispatch({
 		type: SET_ACTIVE_SERVICE,
@@ -118,6 +156,8 @@ export const updateService = (service) => (dispatch) => {
 			return updateFixer()(dispatch);
 		case SERVICE_CL:
 			return updateCurrencyLayer()(dispatch);
+		case SERVICE_NAB:
+			return updateNAB()(dispatch);
 		default:
 			throw new Error(`Unrecognized service "${service}"`);
 	}

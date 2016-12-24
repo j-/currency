@@ -41,6 +41,7 @@ module.exports = {
 			'process.env': {
 				'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
 				'KEY_CL': JSON.stringify(process.env.KEY_CL),
+				'KEY_NAB': JSON.stringify(process.env.KEY_NAB),
 				'KEY_OER': JSON.stringify(process.env.KEY_OER),
 			},
 		}),
